@@ -1,7 +1,8 @@
 import { MantineThemeOverride } from "@mantine/core";
 
-const rensGreen: MantineThemeOverride = {
-  colorScheme: "dark",
+const defaultTheme: MantineThemeOverride = {
+  fontFamily: "Noto Sans JP, sans-serif",
+  colorScheme: "light",
   colors: {
     primaryGolden: [
       "#EFECE0",
@@ -54,4 +55,4 @@ const rensGreen: MantineThemeOverride = {
   },
 };
 
-export default rensGreen;
+export default defaultTheme;

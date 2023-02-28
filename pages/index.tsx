@@ -1,7 +1,12 @@
 import MasterLayout from "~/layouts/master-layout";
+import Hexagon from "~/shared/components/hexagon/hexagon";
 
 const Home = () => {
-  return <div>Test</div>;
+  return (
+    <div>
+      <Hexagon label="mmm" icon="/icons/icon-knife.svg" />
+    </div>
+  );
 };
 
 Home.getLayout = function getLayout(page: React.ReactNode) {

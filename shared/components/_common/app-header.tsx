@@ -9,19 +9,25 @@ import {
   Group,
   Header,
   Image,
+  Indicator,
   Menu,
+  Text,
   Title,
 } from "@mantine/core";
 import { IconHome2, IconCurrencyBitcoin, IconHome } from "@tabler/icons-react";
 
 const menu = [
   {
-    label: "For Sale",
-    icon: <IconHome2 />,
+    label: "自分の記録",
+    icon: "/icons/icon-challenge.svg",
   },
   {
-    label: "For Rent",
-    icon: <IconHome />,
+    label: "チャレンジ",
+    icon: "/icons/icon-memo.svg",
+  },
+  {
+    label: "お知らせ",
+    icon: "/icons/icon-info.svg",
   },
 ];
 
@@ -65,8 +71,8 @@ const AppHeader = () => {
           <Group mr={40}>
             <Group>
               <Image
-                height={40}
-                width={120}
+                height={60}
+                width={140}
                 fit="contain"
                 src="/logos/header-logo.png"
                 alt="Logo"
@@ -75,13 +81,12 @@ const AppHeader = () => {
 
             <Group className={classes.nav}>
               {menu.map((n, idx) => (
-                <Menu key={idx} shadow="md" width={200}>
-                  <Menu.Target>
-                    <Button leftIcon={n.icon} variant="subtle">
-                      {n.label}
-                    </Button>
-                  </Menu.Target>
-                </Menu>
+                <Group key={idx}>
+                  <Indicator label="1">
+                    <Image width={36} alt="" src={n.icon} />
+                  </Indicator>
+                  <Text>{n.label}</Text>
+                </Group>
               ))}
             </Group>
           </Group>

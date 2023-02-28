@@ -2,6 +2,7 @@ import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 import { NextComponentType } from "next";
 import NextProgress from "next-progress";
+import defaultTheme from "~/themes/default-theme";
 
 const CustomApp: NextComponentType<
   AppContext,
@@ -14,13 +15,7 @@ const CustomApp: NextComponentType<
     <>
       <NextProgress delay={100} height="3px" options={{ showSpinner: false }} />
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          fontFamilyMonospace: "Monaco, Courier, monospace",
-        }}
-      >
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={defaultTheme}>
         {getLayout(<Component {...pageProps} />)}
       </MantineProvider>
     </>

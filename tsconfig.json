@@ -21,6 +21,7 @@
     "paths": {
       "~/layouts/*": ["layouts/*"],
       "~/pages/*": ["pages/*"],
+      "~/themes/*": ["themes/*"],
       "~/shared/*": ["shared/*"]
     },
     "plugins": [
