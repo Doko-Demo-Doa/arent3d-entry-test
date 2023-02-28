@@ -5,7 +5,7 @@ const Home = () => {
 };
 
 Home.getLayout = function getLayout(page: React.ReactNode) {
-  return <MasterLayout>{page}</MasterLayout>;
+  return <MasterLayout title="Home">{page}</MasterLayout>;
 };
 
 export default Home;

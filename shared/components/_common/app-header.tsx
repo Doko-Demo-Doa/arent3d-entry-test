@@ -27,6 +27,7 @@ const menu = [
 
 const useStyles = createStyles((theme) => ({
   header: {
+    backgroundColor: theme.colors.dark[4],
     height: 90,
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
       height: 60,
@@ -56,7 +57,7 @@ const AppHeader = () => {
     <Header className={classes.header} height={90}>
       <Container
         size="xl"
-        sx={() => {
+        sx={(theme) => {
           return { height: "100%" };
         }}
       >
