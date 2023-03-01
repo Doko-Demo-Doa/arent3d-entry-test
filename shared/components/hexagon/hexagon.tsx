@@ -19,11 +19,11 @@ const useStyles = createStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "100% 100%",
     cursor: "pointer",
-    filter: "brightness(0.8)",
+    filter: "brightness(0.95)",
     transition: "0.2s linear",
   },
   wrapperActive: {
-    filter: "brightness(1.1)",
+    filter: "brightness(1.16)",
   },
   txt: {
     color: theme.colors.gray[0],
