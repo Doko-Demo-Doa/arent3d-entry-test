@@ -1,4 +1,13 @@
-import { Box, Space, Group, Container, Grid } from "@mantine/core";
+import {
+  Box,
+  Space,
+  Group,
+  Container,
+  Grid,
+  Button,
+  Title,
+  Center,
+} from "@mantine/core";
 import OverviewChart from "~/components/_home/overview-chart";
 import MasterLayout from "~/layouts/master-layout";
 
@@ -57,7 +66,7 @@ const Home = () => {
 
         <Space h={42} />
 
-        <Grid>
+        <Grid gutter="lg">
           {dummyData.map((n, idx) => (
             <Grid.Col key={idx} span={3}>
               <LabeledPicture
@@ -70,6 +79,36 @@ const Home = () => {
       </Container>
 
       <Space h={42} />
+
+      <Center>
+        <Button
+          size="md"
+          variant="gradient"
+          gradient={{
+            from: "primaryGolden.5",
+            to: "primaryOrange.5",
+            deg: -5,
+          }}
+          styles={(theme) => ({
+            root: {
+              height: "4rem",
+              borderRadius: 8,
+              minWidth: 340,
+              backgroundColor: theme.colors.dark[7],
+            },
+            label: {
+              color: "white",
+            },
+          })}
+          onClick={() => null}
+        >
+          <Title align="center" order={3}>
+            記録をもっと見る
+          </Title>
+        </Button>
+      </Center>
+
+      <Space h={142} />
     </>
   );
 };

@@ -13,7 +13,12 @@ const CustomApp: NextComponentType<
 
   return (
     <>
-      <NextProgress delay={100} height="3px" options={{ showSpinner: false }} />
+      <NextProgress
+        delay={100}
+        height="3px"
+        color="#ECC851"
+        options={{ showSpinner: false }}
+      />
 
       <MantineProvider withGlobalStyles withNormalizeCSS theme={defaultTheme}>
         {getLayout(<Component {...pageProps} />)}

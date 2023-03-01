@@ -1,24 +1,16 @@
 import React from "react";
+import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from "recharts";
 import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  Legend,
-  Tooltip,
-  XAxis,
-  YAxis,
-  ResponsiveContainer,
-} from "recharts";
-import {
-  SimpleGrid,
-  AspectRatio,
-  Image,
-  Grid,
   BackgroundImage,
   Flex,
   Box,
   useMantineTheme,
+  createStyles,
+  Text,
 } from "@mantine/core";
+
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 // TODO: Dummy, should be removed
 const data = [
@@ -96,16 +88,70 @@ const data = [
   },
 ];
 
+const useStyles = createStyles((theme) => ({
+  bgSection: { width: "40%", flexGrow: 1, backgroundColor: "yellow" },
+  link: {},
+  innerCircularTextWrapper: {
+    position: "absolute",
+    top: 0,
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  progressValue1: {
+    fontSize: 24,
+    fontFamily: "Inter",
+    color: "white",
+    textShadow: `0 0 20px ${theme.colors.primaryGolden[5]}, 0 0 10px ${theme.colors.primaryGolden[5]}`,
+  },
+  progressValue2: {
+    fontSize: 44,
+    fontFamily: "Inter",
+  },
+}));
+
 const OverviewChart = () => {
   const theme = useMantineTheme();
+  const { classes } = useStyles();
 
   return (
     <Flex direction="row">
       <BackgroundImage
-        sx={{ width: "40%", flexGrow: 1, backgroundColor: "yellow" }}
+        sx={(theme) => ({
+          width: "45%",
+          backgroundColor: "yellow",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        })}
         src="/demo/dishes.jpg"
       >
-        test
+        <Box w="46%" sx={{ position: "relative" }}>
+          <CircularProgressbar
+            value={80}
+            strokeWidth={2}
+            styles={{
+              path: {
+                stroke: "white",
+                filter: "drop-shadow(5px 5px 4px rgba(255, 204, 33, 0.5))",
+              },
+              trail: {
+                stroke: "transparent",
+              },
+            }}
+          />
+
+          <Box className={classes.innerCircularTextWrapper}>
+            <Text className={classes.progressValue1}>
+              05/21{" "}
+              <Text component="span" className={classes.progressValue2}>
+                75%
+              </Text>
+            </Text>
+          </Box>
+        </Box>
       </BackgroundImage>
 
       <Box

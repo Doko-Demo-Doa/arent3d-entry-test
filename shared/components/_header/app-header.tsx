@@ -17,19 +17,23 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import { IconHome2, IconCurrencyBitcoin, IconHome } from "@tabler/icons-react";
+import Link from "next/link";
 
 const menu = [
   {
     label: "自分の記録",
     icon: "/icons/icon-challenge.svg",
+    to: "/my-record",
   },
   {
     label: "チャレンジ",
     icon: "/icons/icon-memo.svg",
+    to: "/challenge",
   },
   {
     label: "お知らせ",
     icon: "/icons/icon-info.svg",
+    to: "/challenge",
   },
 ];
 
@@ -72,12 +76,12 @@ const AppHeader = () => {
     <Header className={classes.header} height={90}>
       <Container
         size="lg"
-        sx={(theme) => {
+        sx={() => {
           return { height: "100%" };
         }}
       >
         <Group sx={{ height: "100%" }} position="apart">
-          <Group>
+          <UnstyledButton href="/" component={Link}>
             <Image
               height={60}
               width={140}
@@ -85,24 +89,26 @@ const AppHeader = () => {
               src="/logos/header-logo.png"
               alt="Logo"
             />
-          </Group>
+          </UnstyledButton>
 
           <Box style={{ flexGrow: 2 }} />
 
           <Group className={classes.nav} position="right">
             {menu.map((n, idx) => (
-              <Group key={idx} sx={{ position: "relative" }}>
-                <Image width={36} alt="" src={n.icon} />
-                {idx === 2 && (
-                  <>
-                    <Box className={classes.indicatorDot}>1</Box>
-                  </>
-                )}
+              <UnstyledButton key={idx} component={Link} href={n.to}>
+                <Group sx={{ position: "relative" }}>
+                  <Image width={36} alt="" src={n.icon} />
+                  {idx === 2 && (
+                    <>
+                      <Box className={classes.indicatorDot}>1</Box>
+                    </>
+                  )}
 
-                <Text size="lg" weight="lighter" color="white" mr={32}>
-                  {n.label}
-                </Text>
-              </Group>
+                  <Text size="lg" weight="lighter" color="white" mr={32}>
+                    {n.label}
+                  </Text>
+                </Group>
+              </UnstyledButton>
             ))}
           </Group>
 
