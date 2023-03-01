@@ -14,6 +14,7 @@ const MyRecordPage = () => {
       <ExercisesSection />
       <Space h={52} />
       <MyDiarySection />
+      <Space h={52} />
     </Container>
   );
 };

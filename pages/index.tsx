@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import OverviewChart from "~/components/_home/overview-chart";
 import MasterLayout from "~/layouts/master-layout";
+import ViewMoreButton from "~/shared/components/buttons/view-more-button";
 
 import Hexagon from "~/shared/components/hexagon/hexagon";
 import LabeledPicture from "~/shared/components/labeled-picture/labeled-picture";
@@ -81,31 +82,7 @@ const Home = () => {
       <Space h={42} />
 
       <Center>
-        <Button
-          size="md"
-          variant="gradient"
-          gradient={{
-            from: "primaryGolden.5",
-            to: "primaryOrange.5",
-            deg: -5,
-          }}
-          styles={(theme) => ({
-            root: {
-              height: "4rem",
-              borderRadius: 8,
-              minWidth: 340,
-              backgroundColor: theme.colors.dark[7],
-            },
-            label: {
-              color: "white",
-            },
-          })}
-          onClick={() => null}
-        >
-          <Title align="center" order={3}>
-            記録をもっと見る
-          </Title>
-        </Button>
+        <ViewMoreButton title="記録をもっと見る" onClick={() => null} />
       </Center>
 
       <Space h={142} />

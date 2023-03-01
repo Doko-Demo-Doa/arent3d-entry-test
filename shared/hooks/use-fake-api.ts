@@ -1,12 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
+
 export default function useFakeApi() {
-  const mutation = useMutation<{ couponCode: string }>({
-    mutationFn: async () => {
-      return new Promise(function (resolve) {
-        setTimeout(function () {
-          resolve({ couponCode: "INFINITY_dulHbP" });
-        }, 1500);
-      });
-    },
+  const mutation = useQuery(["0"], async () => {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/todos/1"
+    );
+    return response.json();
   });
 
   return mutation;

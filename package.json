@@ -2,6 +2,8 @@
   "name": "arent3d-entry-test",
   "description": "Entry test submission for Arent3D, powered by NextJS and Mantine UI kit + Typescript",
   "version": "1.0.0",
+  "license": "Unlicensed",
+  "author": "Quan Pham <https://github.com/Doko-Demo-Doa>",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -45,6 +47,8 @@
     "vitest": "0.29.1"
   },
   "engines": {
-    "node": ">=16.0.0 <=20.0.0"
+    "node": ">=16.13.1",
+    "npm": ">=6.15.5",
+    "react": ">=11.4.1"
   }
 }
