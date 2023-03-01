@@ -1,5 +1,6 @@
-import { AppShell, Container } from "@mantine/core";
+import { AppShell, Footer } from "@mantine/core";
 import Head from "next/head";
+import AppFooter from "~/shared/components/_footer/app-footer";
 
 import AppHeader from "~/shared/components/_header/app-header";
 
@@ -21,6 +22,8 @@ const MasterLayout: React.FC<Props> = ({ children, title, description }) => {
       <AppShell
         padding={0}
         header={<AppHeader />}
+        footer={<AppFooter />}
+        fixed={false}
         styles={(theme) => ({
           main: {
             backgroundColor:

@@ -40,21 +40,11 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.primaryGray[4],
     height: 80,
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
-      height: 60,
+      height: 90,
     },
   },
   nav: {
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
-      display: "none",
-    },
-  },
-  menu: {
-    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
-      display: "none",
-    },
-  },
-  menuMobile: {
-    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       display: "none",
     },
   },
@@ -116,14 +106,12 @@ const AppHeader = () => {
             ))}
           </Group>
 
-          <UnstyledButton>
-            <Image alt="" src="/icons/icon-menu.svg" />
-          </UnstyledButton>
-
-          <Box className={classes.menuMobile}>
+          <Box>
             <Menu shadow="md" width="100%">
               <Menu.Target>
-                <Burger opened={false}>Toggle menu</Burger>
+                <UnstyledButton>
+                  <Image alt="" src="/icons/icon-menu.svg" />
+                </UnstyledButton>
               </Menu.Target>
 
               <Menu.Dropdown>
