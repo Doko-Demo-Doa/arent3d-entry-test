@@ -68,7 +68,7 @@ const Home = () => {
 
         <Grid gutter="lg">
           {dummyData.map((n, idx) => (
-            <Grid.Col key={idx} span={3}>
+            <Grid.Col key={idx} sm={6} md={3}>
               <LabeledPicture
                 src={`/demo/thumbs/${n.img}.jpg`}
                 label={n.label}

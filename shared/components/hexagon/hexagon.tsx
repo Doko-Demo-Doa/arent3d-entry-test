@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, Box, Image, createStyles } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
 
 interface Props {
   icon: string;
@@ -17,6 +18,12 @@ const useStyles = createStyles((theme) => ({
     backgroundImage: "url(/shapes/hexagon.svg)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "100% 100%",
+    cursor: "pointer",
+    filter: "brightness(0.8)",
+    transition: "0.2s linear",
+  },
+  wrapperActive: {
+    filter: "brightness(1.1)",
   },
   txt: {
     color: theme.colors.gray[0],
@@ -26,9 +33,13 @@ const useStyles = createStyles((theme) => ({
 
 const Hexagon: React.FC<Props> = ({ icon, label }) => {
   const { classes, cx } = useStyles();
+  const { hovered, ref } = useHover();
 
   return (
-    <Box className={cx(classes.wrapper)}>
+    <Box
+      ref={ref}
+      className={cx(classes.wrapper, hovered ? classes.wrapperActive : "")}
+    >
       <Image width={80} height={80} alt="" src={icon} />
       <Text className={classes.txt}>{label}</Text>
     </Box>

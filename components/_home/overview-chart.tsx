@@ -1,5 +1,13 @@
 import React from "react";
-import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from "recharts";
+import {
+  LineChart,
+  Line,
+  Tooltip,
+  XAxis,
+  ResponsiveContainer,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 import {
   BackgroundImage,
   Flex,
@@ -164,7 +172,12 @@ const OverviewChart = () => {
       >
         <ResponsiveContainer width="95%" height={400}>
           <LineChart data={data}>
-            <XAxis dataKey="name" />
+            <XAxis axisLine={false} dataKey="name" />
+            <CartesianGrid
+              horizontal={false}
+              strokeDasharray="0"
+              stroke={theme.colors.primaryGray[5]}
+            />
             <Tooltip />
 
             <Line
