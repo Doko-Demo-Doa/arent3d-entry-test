@@ -6,6 +6,7 @@ import {
   Button,
   Container,
   createStyles,
+  Flex,
   Group,
   Header,
   Image,
@@ -13,6 +14,7 @@ import {
   Menu,
   Text,
   Title,
+  UnstyledButton,
 } from "@mantine/core";
 import { IconHome2, IconCurrencyBitcoin, IconHome } from "@tabler/icons-react";
 
@@ -31,10 +33,12 @@ const menu = [
   },
 ];
 
+const DOT_SIZE = 20;
+
 const useStyles = createStyles((theme) => ({
   header: {
-    backgroundColor: theme.colors.dark[4],
-    height: 90,
+    backgroundColor: theme.colors.primaryGray[4],
+    height: 80,
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
       height: 60,
     },
@@ -54,6 +58,21 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
+  indicatorDot: {
+    width: DOT_SIZE,
+    height: DOT_SIZE,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    backgroundColor: theme.colors.primaryDarkOrange[6],
+    borderRadius: DOT_SIZE / 2,
+    top: -4,
+    left: 26,
+    fontSize: theme.fontSizes.xs,
+    color: "white",
+    textAlign: "center",
+  },
 }));
 
 const AppHeader = () => {
@@ -62,36 +81,44 @@ const AppHeader = () => {
   return (
     <Header className={classes.header} height={90}>
       <Container
-        size="xl"
+        size="lg"
         sx={(theme) => {
           return { height: "100%" };
         }}
       >
         <Group sx={{ height: "100%" }} position="apart">
-          <Group mr={40}>
-            <Group>
-              <Image
-                height={60}
-                width={140}
-                fit="contain"
-                src="/logos/header-logo.png"
-                alt="Logo"
-              />
-            </Group>
-
-            <Group className={classes.nav}>
-              {menu.map((n, idx) => (
-                <Group key={idx}>
-                  <Indicator label="1">
-                    <Image width={36} alt="" src={n.icon} />
-                  </Indicator>
-                  <Text>{n.label}</Text>
-                </Group>
-              ))}
-            </Group>
+          <Group>
+            <Image
+              height={60}
+              width={140}
+              fit="contain"
+              src="/logos/header-logo.png"
+              alt="Logo"
+            />
           </Group>
 
-          <Group className={classes.menu}>Test</Group>
+          <Box style={{ flexGrow: 2 }} />
+
+          <Group className={classes.nav} position="right">
+            {menu.map((n, idx) => (
+              <Group key={idx} sx={{ position: "relative" }}>
+                <Image width={36} alt="" src={n.icon} />
+                {idx === 2 && (
+                  <>
+                    <Box className={classes.indicatorDot}>1</Box>
+                  </>
+                )}
+
+                <Text size="lg" weight="lighter" color="white" mr={32}>
+                  {n.label}
+                </Text>
+              </Group>
+            ))}
+          </Group>
+
+          <UnstyledButton>
+            <Image alt="" src="/icons/icon-menu.svg" />
+          </UnstyledButton>
 
           <Box className={classes.menuMobile}>
             <Menu shadow="md" width="100%">
