@@ -19,6 +19,7 @@
     "typeRoots": ["./node_modules/@types", "./types"],
     "baseUrl": ".",
     "paths": {
+      "~/components/*": ["components/*"],
       "~/layouts/*": ["layouts/*"],
       "~/pages/*": ["pages/*"],
       "~/themes/*": ["themes/*"],

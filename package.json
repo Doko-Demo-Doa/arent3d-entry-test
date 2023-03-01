@@ -22,6 +22,7 @@
     "next-progress": "2.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "recharts": "2.4.3",
     "sass": "1.58.3"
   },
   "devDependencies": {
