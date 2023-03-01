@@ -24,6 +24,7 @@ const useStyles = createStyles((theme) => ({
   subtitleBox: {
     backgroundColor: theme.colors.primaryOrange[5],
     alignSelf: "center",
+    minWidth: 160,
   },
   overlay: {
     position: "absolute",
@@ -51,6 +52,7 @@ const PictureFrame: React.FC<Props> = ({ src, title, subtitle }) => {
         <Box className={classes.wrapper}>
           <Title
             weight="normal"
+            align="center"
             color="primaryGolden.5"
             order={2}
             className={classes.title}
