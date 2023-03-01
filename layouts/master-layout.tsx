@@ -1,7 +1,7 @@
 import { AppShell, Container } from "@mantine/core";
 import Head from "next/head";
 
-import AppHeader from "~/shared/components/_common/app-header";
+import AppHeader from "~/shared/components/_header/app-header";
 
 interface Props {
   title?: string;
@@ -19,7 +19,7 @@ const MasterLayout: React.FC<Props> = ({ children, title, description }) => {
       </Head>
 
       <AppShell
-        padding="md"
+        padding={0}
         header={<AppHeader />}
         styles={(theme) => ({
           main: {
@@ -31,9 +31,7 @@ const MasterLayout: React.FC<Props> = ({ children, title, description }) => {
         })}
         sx={{}}
       >
-        <Container sx={{}} size="xl">
-          {children}
-        </Container>
+        {children}
       </AppShell>
     </>
   );
