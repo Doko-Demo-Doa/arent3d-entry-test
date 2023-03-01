@@ -2,7 +2,11 @@ import type { AppContext, AppInitialProps, AppLayoutProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 import { NextComponentType } from "next";
 import NextProgress from "next-progress";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import defaultTheme from "~/themes/default-theme";
+
+const queryClient = new QueryClient();
 
 const CustomApp: NextComponentType<
   AppContext,
@@ -19,10 +23,11 @@ const CustomApp: NextComponentType<
         color="#ECC851"
         options={{ showSpinner: false }}
       />
-
-      <MantineProvider withGlobalStyles withNormalizeCSS theme={defaultTheme}>
-        {getLayout(<Component {...pageProps} />)}
-      </MantineProvider>
+      <QueryClientProvider client={queryClient}>
+        <MantineProvider withGlobalStyles withNormalizeCSS theme={defaultTheme}>
+          {getLayout(<Component {...pageProps} />)}
+        </MantineProvider>
+      </QueryClientProvider>
     </>
   );
 };

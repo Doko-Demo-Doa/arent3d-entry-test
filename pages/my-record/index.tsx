@@ -1,29 +1,19 @@
-import { SimpleGrid, Container } from "@mantine/core";
+import { Container, Space } from "@mantine/core";
 import MasterLayout from "~/layouts/master-layout";
-import PictureFrame from "~/shared/components/picture-frame/picture-frame";
+
+import ExercisesSection from "~/components/_my-record/exercises-section";
+import NavigationSection from "~/components/_my-record/navigation-section";
+import MyDiarySection from "~/components/_my-record/my-diary-section";
 
 const MyRecordPage = () => {
   return (
-    <Container>
-      <SimpleGrid cols={3}>
-        <PictureFrame
-          src="/demo/my-recommendation-01.jpg"
-          title="BODY RECORD"
-          subtitle="自分のカラダの記録"
-        />
-
-        <PictureFrame
-          src="/demo/my-recommendation-02.jpg"
-          title="MY EXERCISE"
-          subtitle="自分の運動の記録"
-        />
-
-        <PictureFrame
-          src="/demo/my-recommendation-03.jpg"
-          title="MY DIARY"
-          subtitle="自分の日記"
-        />
-      </SimpleGrid>
+    <Container size="lg">
+      <Space h={42} />
+      <NavigationSection />
+      <Space h={42} />
+      <ExercisesSection />
+      <Space h={52} />
+      <MyDiarySection />
     </Container>
   );
 };
