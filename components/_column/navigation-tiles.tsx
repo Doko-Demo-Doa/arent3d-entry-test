@@ -1,9 +1,14 @@
 import {
   AspectRatio,
+  Box,
+  Center,
   createStyles,
+  Divider,
+  Flex,
   Paper,
   SimpleGrid,
   Text,
+  Title,
 } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
@@ -46,11 +51,25 @@ const NavigationTiles: React.FC = () => {
       {data.map((n, idx) => (
         <AspectRatio key={idx} ratio={16 / 10} mb="sm">
           <Paper
+            px="lg"
             sx={(theme) => ({ backgroundColor: theme.colors.primaryGray[8] })}
           >
-            <Text align="center" color="white" className={classes.subtitle}>
-              {n.kanji}
-            </Text>
+            <Flex direction="column" justify="center" align="center">
+              <Title
+                order={3}
+                align="center"
+                weight="normal"
+                color="primaryGolden.5"
+              >
+                {n.title}
+              </Title>
+
+              <Divider w={64} my={10} />
+
+              <Text align="center" color="white" className={classes.subtitle}>
+                {n.kanji}
+              </Text>
+            </Flex>
           </Paper>
         </AspectRatio>
       ))}
