@@ -78,7 +78,7 @@ const ChartSection = () => {
               strokeWidth={4}
             />
             <Line
-              type="monotone"
+              type="linear"
               dataKey="c2"
               strokeWidth={4}
               stroke={theme.colors.secondaryTeal[5]}
