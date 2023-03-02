@@ -32,6 +32,10 @@ export default defineConfig({
         find: "~/utils",
         replacement: path.resolve(__dirname, "utils"),
       },
+      {
+        find: "~/shared",
+        replacement: path.resolve(__dirname, "shared"),
+      },
     ],
   },
 });

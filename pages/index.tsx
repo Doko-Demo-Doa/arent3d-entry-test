@@ -6,6 +6,7 @@ import {
   Center,
   Transition,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 import OverviewChart from "~/components/_home/overview-chart";
 import MasterLayout from "~/layouts/master-layout";
@@ -61,6 +62,16 @@ type TagType = "morning" | "lunch" | "dinner" | "snack" | "";
 
 const Home = () => {
   const [currentTag, setTag] = useState<TagType>("");
+  const [currentData, setData] = useState(dummyData);
+  const [isLoading, handler] = useDisclosure(false);
+
+  function appendData() {
+    handler.open();
+    setTimeout(() => {
+      setData([...currentData, ...dummyData]);
+      handler.close();
+    }, 1000);
+  }
 
   return (
     <>
@@ -97,7 +108,7 @@ const Home = () => {
         <Space h={42} />
 
         <Grid gutter="lg">
-          {dummyData.map((n, idx) => (
+          {currentData.map((n, idx) => (
             <Transition
               key={idx}
               mounted={n.tag === currentTag || currentTag === ""}
@@ -121,7 +132,11 @@ const Home = () => {
       <Space h={42} />
 
       <Center>
-        <ViewMoreButton title="記録をもっと見る" onClick={() => null} />
+        <ViewMoreButton
+          loading={isLoading}
+          title="記録をもっと見る"
+          onClick={appendData}
+        />
       </Center>
 
       <Space h={142} />

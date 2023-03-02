@@ -6,6 +6,7 @@ import {
   Header,
   Image,
   Menu,
+  Text,
   UnstyledButton,
 } from "@mantine/core";
 import Link from "next/link";
@@ -33,14 +34,34 @@ const menu = [
 
 const dropDownMenu = [
   {
+    label: "自分の記録",
+    to: "/my-record",
+  },
+  {
+    label: "体重グラフ",
+    to: "/",
+  },
+  {
+    label: "目標",
+    to: "/",
+  },
+  {
+    label: "選択中のコース",
+    to: "/",
+  },
+  {
     label: "コラム一覧",
     to: "/column",
+  },
+  {
+    label: "設定",
+    to: "/settings",
   },
 ];
 
 const useStyles = createStyles((theme) => ({
   header: {
-    backgroundColor: theme.colors.primaryGray[4],
+    backgroundColor: theme.colors.primaryGray[5],
     height: 80,
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
       height: 90,
@@ -49,6 +70,33 @@ const useStyles = createStyles((theme) => ({
   nav: {
     [`@media (max-width: ${theme.breakpoints.md}px)`]: {
       display: "none",
+    },
+  },
+  dropdown: {
+    width: "100%",
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+      width: "100%",
+    },
+    backgroundColor: theme.colors.primaryGray[4],
+    border: "none",
+  },
+  menuItem: {
+    backgroundColor: theme.colors.primaryGray[4],
+    border: "none",
+    borderRadius: 0,
+    borderBottom: `1px solid ${theme.colors.primaryGray[6]}`,
+    boxShadow: `inset 0px 1px ${theme.colors.primaryGray[2]}`,
+    padding: "1rem 2rem",
+    paddingRight: "3rem",
+    userSelect: "none",
+    "&:hover": {
+      backgroundColor: theme.colors.primaryGray[6],
+    },
+    "&:focus": {
+      backgroundColor: theme.colors.primaryGray[6],
+    },
+    "&:active": {
+      backgroundColor: theme.colors.primaryGray[6],
     },
   },
 }));
@@ -90,27 +138,36 @@ const AppHeader = () => {
             ))}
           </Group>
 
-          <Box>
-            <Menu shadow="md" width="100%">
-              <Menu.Target>
-                <UnstyledButton>
-                  <Image alt="" src="/icons/icon-menu.svg" />
-                </UnstyledButton>
-              </Menu.Target>
+          <Menu
+            shadow="md"
+            position="bottom-end"
+            offset={18}
+            classNames={{
+              item: classes.menuItem,
+            }}
+          >
+            <Menu.Target>
+              <UnstyledButton>
+                <Image alt="" src="/icons/icon-menu.svg" />
+              </UnstyledButton>
+            </Menu.Target>
 
-              <Menu.Dropdown>
-                <Menu.Label>Navigation</Menu.Label>
-
-                {dropDownMenu.map((n, idx) => (
-                  <Menu.Item key={idx}>
-                    <UnstyledButton component={Link} href={n.to}>
+            <Menu.Dropdown p={0} className={classes.dropdown}>
+              {dropDownMenu.map((n, idx) => (
+                <Menu.Item key={idx} onClick={() => router.push(n.to)}>
+                  <UnstyledButton
+                    component={Link}
+                    href={n.to}
+                    sx={{ width: "100%" }}
+                  >
+                    <Text color="white" weight="lighter">
                       {n.label}
-                    </UnstyledButton>
-                  </Menu.Item>
-                ))}
-              </Menu.Dropdown>
-            </Menu>
-          </Box>
+                    </Text>
+                  </UnstyledButton>
+                </Menu.Item>
+              ))}
+            </Menu.Dropdown>
+          </Menu>
         </Group>
       </Container>
     </Header>
