@@ -1,7 +1,5 @@
 import {
   AspectRatio,
-  Box,
-  Center,
   createStyles,
   Divider,
   Flex,

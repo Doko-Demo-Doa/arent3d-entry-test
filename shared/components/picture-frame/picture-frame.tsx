@@ -11,6 +11,7 @@ interface Props {
   src: string;
   title?: string;
   subtitle?: string;
+  onClick?: () => void;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -34,11 +35,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const PictureFrame: React.FC<Props> = ({ src, title, subtitle }) => {
+const PictureFrame: React.FC<Props> = ({ src, title, subtitle, onClick }) => {
   const { classes } = useStyles();
 
   return (
-    <AspectRatio ratio={1}>
+    <AspectRatio ratio={1} onClick={onClick}>
       <BackgroundImage
         src={src}
         sx={(theme) => ({
