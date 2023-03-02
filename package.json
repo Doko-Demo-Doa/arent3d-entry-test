@@ -24,6 +24,7 @@
     "ethers": "6.0.8",
     "next": "13.2.3",
     "next-progress": "2.2.0",
+    "rc-queue-anim": "2.0.0",
     "react": "18.2.0",
     "react-circular-progressbar": "2.1.0",
     "react-dom": "18.2.0",

@@ -1,6 +1,13 @@
-import { AppShell } from "@mantine/core";
+import {
+  AppShell,
+  createStyles,
+  Image,
+  Transition,
+  UnstyledButton,
+} from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 import Head from "next/head";
+import { useMemo } from "react";
 
 import AppFooter from "~/shared/components/_footer/app-footer";
 import AppHeader from "~/shared/components/_header/app-header";
@@ -11,8 +18,25 @@ interface Props {
   children?: React.ReactNode;
 }
 
+const useStyles = createStyles((theme) => ({
+  btn: {
+    cursor: "absolute",
+    position: "fixed",
+    right: 100,
+    bottom: "18%",
+  },
+  none: {},
+}));
+
+const SCROLL_THRESHOLD_CEIL = 200;
+
 const MasterLayout: React.FC<Props> = ({ children, title, description }) => {
   const [scroll, scrollTo] = useWindowScroll();
+  const { classes } = useStyles();
+
+  const shouldShowScrollUp = useMemo(() => {
+    return scroll.y >= SCROLL_THRESHOLD_CEIL;
+  }, [scroll.y]);
 
   return (
     <>
@@ -38,6 +62,23 @@ const MasterLayout: React.FC<Props> = ({ children, title, description }) => {
         sx={{}}
       >
         {children}
+
+        <Transition
+          mounted={shouldShowScrollUp}
+          transition="fade"
+          duration={1400}
+          timingFunction="ease"
+        >
+          {(styles) => (
+            <UnstyledButton
+              onClick={() => scrollTo({ y: 0 })}
+              styles={styles}
+              className={classes.btn}
+            >
+              <Image alt="" src="/icons/icon-scrolltop.svg" />
+            </UnstyledButton>
+          )}
+        </Transition>
       </AppShell>
     </>
   );

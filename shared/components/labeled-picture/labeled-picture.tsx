@@ -4,12 +4,12 @@ import {
   Box,
   createStyles,
   Text,
-  Title,
 } from "@mantine/core";
 
 interface Props {
   src: string;
   label?: string;
+  tag?: string;
 }
 
 const useStyles = createStyles((theme) => ({
