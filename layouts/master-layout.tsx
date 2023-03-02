@@ -1,7 +1,8 @@
-import { AppShell, Footer } from "@mantine/core";
+import { AppShell } from "@mantine/core";
+import { useWindowScroll } from "@mantine/hooks";
 import Head from "next/head";
-import AppFooter from "~/shared/components/_footer/app-footer";
 
+import AppFooter from "~/shared/components/_footer/app-footer";
 import AppHeader from "~/shared/components/_header/app-header";
 
 interface Props {
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const MasterLayout: React.FC<Props> = ({ children, title, description }) => {
+  const [scroll, scrollTo] = useWindowScroll();
+
   return (
     <>
       <Head>

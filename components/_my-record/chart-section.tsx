@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 import data from "~/components/chart-data.json";
+import { dataUtils } from "~/utils/utils-data";
 
 type ChartType = "day" | "week" | "month" | "year";
 
@@ -35,6 +36,7 @@ const buttons: Array<{ label: string; type: ChartType }> = [
 const ChartSection = () => {
   const theme = useMantineTheme();
   const [chartMode, setChartMode] = useState<ChartType>("year");
+  const [filteredData, setData] = useState(data);
 
   return (
     <div>
@@ -58,8 +60,8 @@ const ChartSection = () => {
           </Title>
         </Group>
 
-        <ResponsiveContainer width="95%" height={360}>
-          <LineChart data={data}>
+        <ResponsiveContainer height={360}>
+          <LineChart data={filteredData}>
             <XAxis axisLine={false} dataKey="name" tick={{ fill: "white" }} />
             <CartesianGrid
               horizontal={false}
@@ -92,6 +94,20 @@ const ChartSection = () => {
               <Button
                 key={idx}
                 compact
+                onClick={() => {
+                  setChartMode(n.type);
+                  setData(
+                    data.map((d) => {
+                      const newD = {
+                        ...d,
+                        c1: dataUtils.randomIntFromInterval(500, 3000),
+                        c2: dataUtils.randomIntFromInterval(500, 3000),
+                        c3: dataUtils.randomIntFromInterval(500, 4000),
+                      };
+                      return newD;
+                    })
+                  );
+                }}
                 sx={{
                   minWidth: 60,
                   borderRadius: 20,

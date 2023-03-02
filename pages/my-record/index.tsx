@@ -15,6 +15,11 @@ const MyRecordPage = () => {
 
   const { scrollIntoView: scrollIntoExSection, targetRef: exerciseRef } =
     useScrollIntoView<HTMLDivElement>({
+      offset: 20,
+    });
+
+  const { scrollIntoView: scrollIntoDiary, targetRef: diaryRef } =
+    useScrollIntoView<HTMLDivElement>({
       offset: 60,
     });
 
@@ -25,6 +30,10 @@ const MyRecordPage = () => {
         break;
       case 1:
         scrollIntoExSection();
+        break;
+      case 2:
+        scrollIntoDiary();
+        break;
       default:
         break;
     }
@@ -38,7 +47,7 @@ const MyRecordPage = () => {
       <ChartSection />
       <Space h={42} ref={exerciseRef} />
       <ExercisesSection />
-      <Space h={52} />
+      <Space h={52} ref={diaryRef} />
       <MyDiarySection />
       <Space h={52} />
     </Container>

@@ -23,7 +23,8 @@
       "~/layouts/*": ["layouts/*"],
       "~/pages/*": ["pages/*"],
       "~/themes/*": ["themes/*"],
-      "~/shared/*": ["shared/*"]
+      "~/shared/*": ["shared/*"],
+      "~/utils/*": ["utils/*"]
     },
     "plugins": [
       {
