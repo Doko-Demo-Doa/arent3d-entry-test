@@ -65,9 +65,7 @@ const Home = () => {
   return (
     <>
       <OverviewChart />
-
       <Space h={42} />
-
       <Container size="lg">
         <Group position="center" spacing="xl">
           <Hexagon

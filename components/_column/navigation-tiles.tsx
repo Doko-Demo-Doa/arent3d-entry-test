@@ -39,7 +39,7 @@ const NavigationTiles: React.FC = () => {
   return (
     <SimpleGrid
       cols={4}
-      spacing={32}
+      spacing={42}
       breakpoints={[
         { maxWidth: "md", cols: 3, spacing: "md" },
         { maxWidth: "sm", cols: 2, spacing: 32 },

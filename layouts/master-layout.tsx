@@ -22,8 +22,8 @@ const useStyles = createStyles((theme) => ({
   btn: {
     cursor: "absolute",
     position: "fixed",
-    right: 100,
-    bottom: "18%",
+    right: 60,
+    bottom: "20%",
   },
   none: {},
 }));

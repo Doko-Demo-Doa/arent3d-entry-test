@@ -8,61 +8,84 @@ import {
   CartesianGrid,
 } from "recharts";
 import {
-  BackgroundImage,
   Flex,
   Box,
   useMantineTheme,
   createStyles,
   Text,
+  Image,
 } from "@mantine/core";
 
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 // TODO: Dummy, should be removed later
 import data from "~/components/chart-data.json";
 
-const useStyles = createStyles((theme) => ({
-  bgSection: { width: "40%", flexGrow: 1, backgroundColor: "yellow" },
-  link: {},
-  innerCircularTextWrapper: {
-    position: "absolute",
-    top: 0,
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  progressValue1: {
-    fontSize: 24,
-    fontFamily: "Inter",
-    color: "white",
-    textShadow: `0 0 20px ${theme.colors.primaryGolden[5]}, 0 0 10px ${theme.colors.primaryGolden[5]}`,
-  },
-  progressValue2: {
-    fontSize: 44,
-    fontFamily: "Inter",
-  },
-}));
+const useStyles = createStyles((theme) => {
+  return {
+    wrapper: {
+      [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+        flexDirection: "column",
+      },
+      [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+        flexDirection: "row",
+      },
+    },
+    bgSection: {
+      [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+        width: "unset",
+      },
+      [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+        width: "45%",
+      },
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+      overflow: "hidden",
+    },
+    bgImage: {
+      position: "absolute",
+    },
+    innerCircularTextWrapper: {
+      position: "absolute",
+      top: 0,
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    progressValue1: {
+      fontSize: 24,
+      fontFamily: "Inter",
+      color: "white",
+      textShadow: `0 0 20px ${theme.colors.primaryGolden[5]}, 0 0 10px ${theme.colors.primaryGolden[5]}`,
+    },
+    progressValue2: {
+      fontSize: 44,
+      fontFamily: "Inter",
+    },
+  };
+});
 
 const OverviewChart = () => {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
   return (
-    <Flex direction="row">
-      <BackgroundImage
-        sx={(theme) => ({
-          width: "45%",
-          backgroundColor: "yellow",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        })}
-        src="/demo/dishes.jpg"
-      >
-        <Box w="46%" sx={{ position: "relative" }}>
+    <Flex className={classes.wrapper}>
+      <Box className={classes.bgSection} py={26}>
+        <Image
+          fit="fill"
+          alt=""
+          src="/demo/dishes.jpg"
+          height="100%"
+          className={classes.bgImage}
+        />
+
+        <Box w="40%" sx={{ position: "relative", maxWidth: 300 }}>
           <CircularProgressbar
             value={80}
             strokeWidth={2}
@@ -86,7 +109,7 @@ const OverviewChart = () => {
             </Text>
           </Box>
         </Box>
-      </BackgroundImage>
+      </Box>
 
       <Box
         sx={(theme) => ({
@@ -98,11 +121,11 @@ const OverviewChart = () => {
       >
         <ResponsiveContainer width="95%" height={400}>
           <LineChart data={data}>
-            <XAxis axisLine={false} dataKey="name" />
+            <XAxis axisLine={false} dataKey="name" tick={{ fill: "white" }} />
             <CartesianGrid
               horizontal={false}
               strokeDasharray="0"
-              stroke={theme.colors.primaryGray[5]}
+              stroke={theme.colors.primaryGray[2]}
             />
             <Tooltip />
 

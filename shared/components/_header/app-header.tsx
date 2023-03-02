@@ -56,7 +56,6 @@ const useStyles = createStyles((theme) => ({
 const AppHeader = () => {
   const { classes } = useStyles();
   const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <Header className={classes.header} height={90}>
