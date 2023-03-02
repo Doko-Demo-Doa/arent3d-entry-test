@@ -53,6 +53,11 @@ const ExercisesSection = () => {
           spacing={32}
           verticalSpacing={8}
           sx={{ color: "white" }}
+          breakpoints={[
+            { maxWidth: "md", cols: 2, spacing: "md" },
+            { maxWidth: "sm", cols: 1, spacing: "sm" },
+            { maxWidth: "xs", cols: 1, spacing: "sm" },
+          ]}
         >
           {dummyArray.map((n, idx) => (
             <Box key={idx}>

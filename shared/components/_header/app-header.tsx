@@ -37,6 +37,13 @@ const menu = [
   },
 ];
 
+const dropDownMenu = [
+  {
+    label: "コラム一覧",
+    to: "/column",
+  },
+];
+
 const DOT_SIZE = 20;
 
 const useStyles = createStyles((theme) => ({
@@ -98,11 +105,7 @@ const AppHeader = () => {
               <UnstyledButton key={idx} component={Link} href={n.to}>
                 <Group sx={{ position: "relative" }}>
                   <Image width={36} alt="" src={n.icon} />
-                  {idx === 2 && (
-                    <>
-                      <Box className={classes.indicatorDot}>1</Box>
-                    </>
-                  )}
+                  {idx === 2 && <Box className={classes.indicatorDot}>1</Box>}
 
                   <Text size="lg" weight="lighter" color="white" mr={32}>
                     {n.label}
@@ -123,15 +126,13 @@ const AppHeader = () => {
               <Menu.Dropdown>
                 <Menu.Label>Navigation</Menu.Label>
 
-                {menu.map((n, idx) => (
-                  <Menu.Item key={idx} icon={n.icon}>
-                    {n.label}
+                {dropDownMenu.map((n, idx) => (
+                  <Menu.Item key={idx}>
+                    <UnstyledButton component={Link} href={n.to}>
+                      {n.label}
+                    </UnstyledButton>
                   </Menu.Item>
                 ))}
-
-                <Menu.Divider />
-                <Menu.Label>Authentication</Menu.Label>
-                <Menu.Item icon={<IconCurrencyBitcoin />}>Test</Menu.Item>
               </Menu.Dropdown>
             </Menu>
           </Box>
