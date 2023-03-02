@@ -1,23 +1,17 @@
-"use client";
-import React from "react";
 import {
   Box,
-  Burger,
-  Button,
   Container,
   createStyles,
-  Flex,
   Group,
   Header,
   Image,
-  Indicator,
   Menu,
-  Text,
-  Title,
   UnstyledButton,
 } from "@mantine/core";
-import { IconHome2, IconCurrencyBitcoin, IconHome } from "@tabler/icons-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+import CustomMenuItem from "~/shared/components/_header/custom-menu-item";
 
 const menu = [
   {
@@ -44,8 +38,6 @@ const dropDownMenu = [
   },
 ];
 
-const DOT_SIZE = 20;
-
 const useStyles = createStyles((theme) => ({
   header: {
     backgroundColor: theme.colors.primaryGray[4],
@@ -59,25 +51,12 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
-  indicatorDot: {
-    width: DOT_SIZE,
-    height: DOT_SIZE,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    backgroundColor: theme.colors.primaryDarkOrange[6],
-    borderRadius: DOT_SIZE / 2,
-    top: -4,
-    left: 26,
-    fontSize: theme.fontSizes.xs,
-    color: "white",
-    textAlign: "center",
-  },
 }));
 
 const AppHeader = () => {
   const { classes } = useStyles();
+  const router = useRouter();
+  console.log(router.pathname);
 
   return (
     <Header className={classes.header} height={90}>
@@ -102,16 +81,13 @@ const AppHeader = () => {
 
           <Group className={classes.nav} position="right">
             {menu.map((n, idx) => (
-              <UnstyledButton key={idx} component={Link} href={n.to}>
-                <Group sx={{ position: "relative" }}>
-                  <Image width={36} alt="" src={n.icon} />
-                  {idx === 2 && <Box className={classes.indicatorDot}>1</Box>}
-
-                  <Text size="lg" weight="lighter" color="white" mr={32}>
-                    {n.label}
-                  </Text>
-                </Group>
-              </UnstyledButton>
+              <CustomMenuItem
+                key={idx}
+                label={n.label}
+                isActive={router.pathname === n.to}
+                to={n.to}
+                iconSrc={n.icon}
+              />
             ))}
           </Group>
 
