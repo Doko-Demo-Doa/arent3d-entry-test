@@ -30,7 +30,7 @@ const ExercisesSection = () => {
   return (
     <Paper className={classes.wrapper} py={16} px={20}>
       <Group mb="lg">
-        <Title order={4} color="white" weight="lighter" ff="Inter">
+        <Title order={4} color="white" weight="lighter" ff="Inter" mr={40}>
           MY
           <br />
           EXERCISE

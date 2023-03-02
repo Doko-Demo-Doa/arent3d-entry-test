@@ -15,6 +15,9 @@ interface Props {
 }
 
 const useStyles = createStyles((theme) => ({
+  arContainer: {
+    cursor: "pointer",
+  },
   wrapper: {
     display: "flex",
     flexDirection: "column",
@@ -39,7 +42,7 @@ const PictureFrame: React.FC<Props> = ({ src, title, subtitle, onClick }) => {
   const { classes } = useStyles();
 
   return (
-    <AspectRatio ratio={1} onClick={onClick}>
+    <AspectRatio ratio={1} className={classes.arContainer} onClick={onClick}>
       <BackgroundImage
         src={src}
         sx={(theme) => ({

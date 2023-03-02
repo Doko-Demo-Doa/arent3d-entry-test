@@ -50,7 +50,10 @@ const NavigationTiles: React.FC = () => {
         <AspectRatio key={idx} ratio={16 / 10} mb="sm">
           <Paper
             px="lg"
-            sx={(theme) => ({ backgroundColor: theme.colors.primaryGray[8] })}
+            sx={(theme) => ({
+              backgroundColor: theme.colors.primaryGray[8],
+              borderRadius: 0,
+            })}
           >
             <Flex direction="column" justify="center" align="center">
               <Title
